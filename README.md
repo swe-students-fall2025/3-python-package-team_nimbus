@@ -11,8 +11,8 @@
 | Name | GitHub Profile |
 |------|----------------|
 | Asim | [@asimd0](https://github.com/asimd0) |
-| Matt | [@treejitsu](https://github.com/treejitsu) |
-| Tup  | [@m9membreno](https://github.com/m9membreno) |
+| Matt | [@m9membreno](https://github.com/m9membreno) |
+| Tup  | [@treejitsu](https://github.com/treejitsu) |
 | Elia | [@YilinWu1028](https://github.com/YilinWu1028) |
 | Mojin| [@Mojin-Yuan](https://github.com/Mojin-Yuan) |
 
