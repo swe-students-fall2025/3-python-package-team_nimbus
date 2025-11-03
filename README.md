@@ -6,9 +6,33 @@
 
 ⚠️ *This package is for entertainment and educational use only — no real gambling or monetary transactions are involved.*
 
----
+
+## 👥 Team Members
+| Name | GitHub Profile |
+|------|----------------|
+| Asim | [@asimd0](https://github.com/asimd0) |
+| Matt | [@treejitsu](https://github.com/treejitsu) |
+| Tup  | [@m9membreno](https://github.com/m9membreno) |
+| Elia | [@YilinWu1028](https://github.com/YilinWu1028) |
+| Mojin| [@Mojin-Yuan](https://github.com/Mojin-Yuan) |
+
+
+## 🚀 How to Import and Use NimbusCasino
+Developers can use the **nimbuscasino** package to easily simulate simple chance-based games inside their own Python code.
+### Example Programs
+- [play_coinflip.py](./src/nimbuscasino/play_coinflip.py)
+
+
+## 🛠 How to Contribute
+Developers who want to contribute to **NimbusCasino** can follow these steps to set up the environment, install dependencies, and run tests locally.
+
 
 ## 📦 Installation
+NimbusCasino is available on [PyPI](https://pypi.org/project/nimbuscasino/).  
+Install it with:
+
 ```bash
 pip install nimbuscasino
+
+
 
