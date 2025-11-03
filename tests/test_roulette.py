@@ -4,8 +4,9 @@ Test suite for the roulette_color function in nimbuscasino package.
 Tests basic functionality including winning, losing, and edge cases.
 """
 
-import pytest
+import pytest # type: ignore
 from unittest.mock import Mock
+from nimbuscasino.roulette import roulette_color
 
 
 # Assuming the function signature:
