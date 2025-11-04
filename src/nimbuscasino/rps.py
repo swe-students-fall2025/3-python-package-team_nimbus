@@ -1,6 +1,6 @@
 import random
 
-def rps(player, bet=1):
+def rps(player, bet=1, rng=None):
     """
     Plays a Rock-Paper-Scissors round against the computer.
     
@@ -25,8 +25,9 @@ def rps(player, bet=1):
     if player not in valid_choices:
         raise ValueError(f"Invalid choice '{player}'. Choose from {valid_choices}.")
     
-    # Computer randomly chooses
-    computer = random.choice(valid_choices)
+    # Computer randomly chooses if rng not set
+    r = rng if rng is not None else random.Random()
+    computer = r.choice(valid_choices)
     
     # Determine outcome
     if player == computer:
@@ -43,5 +44,10 @@ def rps(player, bet=1):
         result = "lose"
         payout = -bet
     
-    print(f"You chose {player}, computer chose {computer} → {result.upper()}")
-    return result, payout
+    return {
+        "game": "rps",
+        "player": player,
+        "computer": computer,
+        "result": result,
+        "payout": payout,
+    }

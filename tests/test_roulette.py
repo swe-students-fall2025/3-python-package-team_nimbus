@@ -22,7 +22,7 @@ def test_roulette_wins_on_matching_color():
     
     result = roulette_color("red", bet=10, rng=mock_rng)
     
-    assert result['result'] == 'win'
+    assert result['result'] is True
     assert result['spin'] == 'red'
     assert result['payout'] == 10
 
@@ -35,7 +35,7 @@ def test_roulette_loses_on_opposite_color():
     
     result = roulette_color("red", bet=10, rng=mock_rng)
     
-    assert result['result'] == 'loss'
+    assert result['result'] is False
     assert result['spin'] == 'black'
     assert result['payout'] == -10
 
@@ -48,7 +48,7 @@ def test_roulette_loses_on_green():
     
     result = roulette_color("red", bet=15, rng=mock_rng)
     
-    assert result['result'] == 'loss'
+    assert result['result'] is False
     assert result['spin'] == 'green'
     assert result['payout'] == -15
 
