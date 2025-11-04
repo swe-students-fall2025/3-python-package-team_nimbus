@@ -63,14 +63,12 @@ def roulette_color(color, bet=1, rng=None):
         spin_result = random.choice(wheel)
     
     # Determine win or loss
-    if spin_result == color:
-        result = "win"
-        payout = bet
-    else:
-        result = "loss"
-        payout = -bet
+    result = (spin_result == color)
+    payout = float((bet if result else -bet))
     
     return {
+        'game': "roulette",
+        'guess': color,
         'result': result,
         'spin': spin_result,
         'payout': payout
