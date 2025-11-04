@@ -6,6 +6,7 @@ from nimbuscasino.coinflip import coinflip
 from nimbuscasino.slots import spin_slots
 
 def prompt_bet(credits: int) -> int:
+    #take user's bet
     while True:
         try:
             bet = int(input("Enter your bet amount: ").strip())
@@ -21,6 +22,7 @@ def prompt_bet(credits: int) -> int:
 
 
 def play_roulette_mode(credits: int) -> int:
+    #interactive roulette game
     print("\n🎡 Roulette — bet on red/black")
     color = input("Pick 'red' or 'black': ").strip().lower()
     if color not in {"red", "black"}:
@@ -37,6 +39,7 @@ def play_roulette_mode(credits: int) -> int:
 
 
 def play_rps_mode(credits: int) -> int:
+    #interactive rps game
     print("\n✊🖐️✌️ Rock-Paper-Scissors")
     move = input("Choose 'rock', 'paper', or 'scissors': ").strip().lower()
     if move not in {"rock", "paper", "scissors"}:
@@ -53,6 +56,7 @@ def play_rps_mode(credits: int) -> int:
 
 
 def play_coinflip_mode(credits: int) -> int:
+    #interactive coinflip game
     print("\n🪙 Coinflip")
     guess = input("Guess 'heads' or 'tails': ").strip().lower()
     if guess not in {"heads", "tails"}:
@@ -69,7 +73,7 @@ def play_coinflip_mode(credits: int) -> int:
 
 
 def play_slots_mode(credits: int) -> int:
-    # Uses the same interactive flow you had in slots; only wrapped to share credits.
+    # Uses the same interactive flow in slots.py; only wrapped to share credits.
     print("\n🎰 Slots")
     bet = prompt_bet(credits)
     res = spin_slots(bet=bet)
