@@ -25,11 +25,9 @@ def rps(player, bet=1, rng=None):
     if player not in valid_choices:
         raise ValueError(f"Invalid choice '{player}'. Choose from {valid_choices}.")
     
+    # Computer randomly chooses if rng not set
     r = rng if rng is not None else random.Random()
     computer = r.choice(valid_choices)
-    
-    # Computer randomly chooses
-    computer = random.choice(valid_choices)
     
     # Determine outcome
     if player == computer:

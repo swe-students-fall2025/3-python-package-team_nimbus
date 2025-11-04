@@ -8,7 +8,7 @@ from nimbuscasino.rps import rps
     #
 
 
-def test_tie_check(self, example_fixture):
+def test_tie_check():
     """
     Test debugging... making sure that we can run a simple test that always passes.
     Note the use of the example_fixture in the parameter list - any setup and teardown in that fixture will be run before and after this test function executes
@@ -26,7 +26,7 @@ def test_tie_check(self, example_fixture):
         assert res["player"] == move
         assert res["computer"] == move
 
-def test_win_check(self, example_fixture):
+def test_win_check():
     """
     Test debugging... making sure that we can run a simple test that always passes.
     Note the use of the example_fixture in the parameter list - any setup and teardown in that fixture will be run before and after this test function executes
@@ -48,7 +48,7 @@ def test_win_check(self, example_fixture):
         assert res["player"] == player
         assert res["computer"] == comp
 
-def test_lose_check(self, example_fixture):
+def test_lose_check():
     """
     Test debugging... making sure that we can run a simple test that always passes.
     Note the use of the example_fixture in the parameter list - any setup and teardown in that fixture will be run before and after this test function executes
@@ -70,9 +70,9 @@ def test_lose_check(self, example_fixture):
         assert res["player"] == player
         assert res["computer"] == comp
 
-def test_invalid_choice(self, example_fixture):
+def test_invalid_choice():
     """
     Test that an invalid choice raises a ValueError.
     """
     with pytest.raises(ValueError):
-        rps.rps('invalid_choice')    
+        rps('invalid_choice')    
