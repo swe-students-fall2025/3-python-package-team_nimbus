@@ -5,7 +5,6 @@ from nimbuscasino.rps import rps
 from nimbuscasino.coinflip import coinflip
 from nimbuscasino.slots import spin_slots
 
-print("Starting NimbusCasino example…")
 def prompt_bet(credits: int) -> int:
     while True:
         try:
@@ -21,7 +20,7 @@ def prompt_bet(credits: int) -> int:
             return bet
 
 
-def play_roulette_mode(credits: int, rng: random.Random) -> int:
+def play_roulette_mode(credits: int) -> int:
     print("\n🎡 Roulette — bet on red/black")
     color = input("Pick 'red' or 'black': ").strip().lower()
     if color not in {"red", "black"}:
@@ -29,7 +28,7 @@ def play_roulette_mode(credits: int, rng: random.Random) -> int:
         return credits
     bet = prompt_bet(credits)
 
-    res = roulette_color(color, bet=bet, rng=rng)
+    res = roulette_color(color, bet=bet)
     print(f"Spin: {res['spin']}")
     net = res["payout"]
     credits += net
@@ -37,7 +36,7 @@ def play_roulette_mode(credits: int, rng: random.Random) -> int:
     return credits
 
 
-def play_rps_mode(credits: int, rng: random.Random) -> int:
+def play_rps_mode(credits: int) -> int:
     print("\n✊🖐️✌️ Rock-Paper-Scissors")
     move = input("Choose 'rock', 'paper', or 'scissors': ").strip().lower()
     if move not in {"rock", "paper", "scissors"}:
@@ -45,7 +44,7 @@ def play_rps_mode(credits: int, rng: random.Random) -> int:
         return credits
     bet = prompt_bet(credits)
 
-    res = rps(move, bet=bet, rng=rng)
+    res = rps(move, bet=bet)
     print(f"Computer: {res['computer']} → Result: {res['result'].upper()}")
     net = res["payout"]
     credits += net
@@ -53,7 +52,7 @@ def play_rps_mode(credits: int, rng: random.Random) -> int:
     return credits
 
 
-def play_coinflip_mode(credits: int, rng: random.Random) -> int:
+def play_coinflip_mode(credits: int) -> int:
     print("\n🪙 Coinflip")
     guess = input("Guess 'heads' or 'tails': ").strip().lower()
     if guess not in {"heads", "tails"}:
@@ -61,7 +60,7 @@ def play_coinflip_mode(credits: int, rng: random.Random) -> int:
         return credits
     bet = prompt_bet(credits)
 
-    res = coinflip(guess, bet=bet, rng=rng)
+    res = coinflip(guess, bet=bet)
     print(f"Flip: {res['flip']} → {'WIN' if res['win'] else 'LOSS'}")
     net = res["payout"]
     credits += net
@@ -69,11 +68,11 @@ def play_coinflip_mode(credits: int, rng: random.Random) -> int:
     return credits
 
 
-def play_slots_mode(credits: int, rng: random.Random) -> int:
+def play_slots_mode(credits: int) -> int:
     # Uses the same interactive flow you had in slots; only wrapped to share credits.
     print("\n🎰 Slots")
     bet = prompt_bet(credits)
-    res = spin_slots(bet=bet, rng=rng)
+    res = spin_slots(bet=bet)
 
     print("🧩 Grid:")
     for row in res["grid"]:
@@ -97,7 +96,6 @@ def play_slots_mode(credits: int, rng: random.Random) -> int:
 
 
 def main():
-    rng = random.Random()
     credits = 100
     MENU = {
         "1": ("Roulette", play_roulette_mode),
@@ -107,9 +105,12 @@ def main():
         "q": ("Quit", None),
     }
 
-    print("🎮 NimbusCasino Example — unified menu")
+    print("🎮 NimbusCasino Example")
     while True:
         print(f"\n💰 Credits: {credits}")
+        if credits <= 0:
+            print("👋 Thanks for playing! (no credits)")
+            break
         for k, (label, _) in MENU.items():
             print(f"  {k}) {label}")
         choice = input("Select: ").strip().lower()
@@ -122,7 +123,7 @@ def main():
             continue
 
         _, handler = MENU[choice]
-        credits = handler(credits, rng)
+        credits = handler(credits)
 
 
 if __name__ == "__main__":
