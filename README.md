@@ -20,7 +20,7 @@
 ## 🚀 How to Import and Use NimbusCasino
 Developers can use the **nimbuscasino** package to easily simulate simple chance-based games inside their own Python code.
 ### Example Programs
-- [play_coinflip.py](./src/nimbuscasino/play_coinflip.py)
+- [example_function_usage.py](./src/nimbuscasino/example_function_usage.py)
 
 
 ## 🛠 How to Contribute
