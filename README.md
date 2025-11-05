@@ -26,45 +26,37 @@ All game functions are **pure** (no input/print, no global state) and return str
 
 
 
-## Installation & Virtual Environment Setup (pipenv)
-### PyPi page
+## Installation
+#### PyPi page
 https://pypi.org/project/nimbuscasino/
 
 
-### 1) Install pipenv (if needed)
+#### 1) Install pipenv (if needed)
 ```bash
 pip install pipenv
 ```
-### 2) Create/activate a virtual environment
+#### 2) Create/activate a virtual environment
 ```bash
 pipenv shell
 ```
-### 3) Install nimbuscasino from PyPi
+#### 3) Install nimbuscasino from PyPi
 ```bash
 pipenv install nimbuscasino
 ```
-#### to verify your installation:
+#### Verify your installation in python:
 ```python
 from nimbuscasino.rps import rps
 print(rps("rock"))
 ```
 
-## How to Import and Use NimbusCasino
-Developers can use the **nimbuscasino** package to easily simulate simple chance-based games inside their own Python code.
+## Usage:
+
+
 ### Example Programs
 - [example.py](https://github.com/swe-students-fall2025/3-python-package-team_nimbus/blob/pipfile-experiment/example.py)
 
 
-## 🛠 How to Contribute
-Developers who want to contribute to **NimbusCasino** can follow these steps to set up the environment, install dependencies, and run tests locally.
 
-
-## 📦 Installation
-NimbusCasino is available on [PyPI](https://pypi.org/project/nimbuscasino/).  
-Install it with:
-
-```bash
-pip install nimbuscasino
 
 
 
