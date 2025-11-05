@@ -178,7 +178,7 @@ print(res)
 A demo is included for trying all four games:
 
 **File:** `example.py`  
-https://github.com/swe-students-fall2025/3-python-package-team_nimbus/blob/main/example.py
+https://github.com/swe-students-fall2025/3-python-package-team_nimbus/blob/pipfile-experiment/example.py
 
 Run it:
 ```bash
