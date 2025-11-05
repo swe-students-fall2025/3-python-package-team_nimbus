@@ -3,7 +3,7 @@ import random
 from nimbuscasino.roulette import roulette_color
 from nimbuscasino.rps import rps
 from nimbuscasino.coinflip import coinflip
-from nimbuscasino.slots import spin_slots
+from nimbuscasino.slots import spin_slots, SpinResult
 
 def prompt_bet(credits: int) -> int:
     #take user's bet
@@ -76,20 +76,20 @@ def play_slots_mode(credits: int) -> int:
     # Uses the same interactive flow in slots.py; only wrapped to share credits.
     print("\n🎰 Slots")
     bet = prompt_bet(credits)
-    res = spin_slots(bet=bet)
+    res: SpinResult = spin_slots(bet=bet)
 
     print("🧩 Grid:")
-    for row in res["grid"]:
+    for row in res.grid:
         print("  ", " | ".join(row))
 
-    if res["lines"]:
+    if res.lines:
         print("🏆 Line wins:")
-        for line, info in res["lines"].items():
+        for line, info in res.lines.items():
             print(f"  {line}: {info['count']}×{info['symbol']} → +{info['payout']}")
     else:
         print("— No wins —")
 
-    payout = res["total_payout"]
+    payout = res.total_payout
     net = payout - bet
     credits += net
     if net >= 0:
