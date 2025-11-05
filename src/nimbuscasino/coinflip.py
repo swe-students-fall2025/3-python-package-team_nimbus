@@ -42,3 +42,18 @@ def coinflip(
         payout=payout,
         prob_heads=bias,
     )
+# -------------------------------
+# Experimental Debug Section (Temporary)
+# The following snippet is used to manually verify
+# the fairness of the RNG distribution for different biases.
+# Commented out to avoid interfering with tests.
+# -------------------------------
+# for test_bias in [0.3, 0.5, 0.7]:
+#     wins = 0
+#     trials = 100
+#     for _ in range(trials):
+#         result = coinflip("heads", bet=1, bias=test_bias)
+#         if result["win"]:
+#             wins += 1
+#     print(f"Bias={test_bias} -> Win rate={wins/trials:.2f}")
+# -------------------------------
