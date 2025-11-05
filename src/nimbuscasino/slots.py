@@ -1,17 +1,15 @@
-# slots.py
+# src/nimbuscasino/slots.py
 from __future__ import annotations
 
-from dataclasses import dataclass  # NEW: dataclass for test compatibility
+from dataclasses import dataclass
 import random
-from typing import Optional, Dict, List, Literal, TypedDict
+from typing import Optional, Dict, List, TypedDict
 
-# keep a simple dict shape for line info (not used by the test)
 class SlotsLineInfo(TypedDict):
     symbol: str
     count: int
     payout: int
 
-# NEW: dataclass that matches test usage (attribute access + isinstance)
 @dataclass(frozen=True)
 class SpinResult:
     grid: List[List[str]]
@@ -54,7 +52,6 @@ def spin_slots(
     syms = symbols or DEFAULT_SYMBOLS
     wts = weights or DEFAULT_WEIGHTS
     pt = paytable or DEFAULT_PAYTABLE
-
     if len(syms) != len(wts):
         raise ValueError("symbols and weights must be same length")
 
@@ -85,52 +82,3 @@ def spin_slots(
                 total += payout
 
     return SpinResult(grid=grid, lines=lines_out, total_payout=total)
-
-if __name__ == "__main__":
-    rng = random.Random()
-    print("🎰 Welcome to NimbusCasino: Slots Edition 🎰")
-    credits = 100
-
-    while True:
-        print(f"\n💰 Current credits: {credits}")
-        cmd = input("Type 'spin' to play, 'quit' to exit: ").strip().lower()
-
-        if cmd == "quit":
-            print(f"👋 Thanks for playing! Final credits: {credits}")
-            break
-        if cmd != "spin":
-            print("❌ Type 'spin' or 'quit'.")
-            continue
-
-        try:
-            bet = int(input("Enter your bet amount: "))
-        except ValueError:
-            print("❌ Bet must be a number.")
-            continue
-        if bet <= 0:
-            print("❌ Bet must be positive.")
-            continue
-        if bet > credits:
-            print("❌ Not enough credits.")
-            continue
-
-        res = spin_slots(bet=bet, rng=rng)
-        print("🧩 Grid:")
-        for row in res.grid:
-            print("  ", " | ".join(row))
-
-        if res.lines:
-            print("🏆 Line wins:")
-            for line, info in res.lines.items():
-                print(f"  {line}: {info['count']}×{info['symbol']} → +{info['payout']}")
-        else:
-            print("— No wins —")
-
-        payout = res.total_payout
-        net = payout - bet
-        credits = credits - bet + payout
-
-        if net >= 0:
-            print(f"✅ WIN +{net} (payout {payout} on bet {bet})")
-        else:
-            print(f"💀 LOSS {net} (payout {payout} on bet {bet})")
